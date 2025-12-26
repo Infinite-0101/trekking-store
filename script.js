@@ -1,175 +1,170 @@
+/* ================= PRODUCTS DATABASE ================= */
+
 const products = [
-  {name:"Trekking Backpack", price:2499, category:"beginner", img:"https://picsum.photos/200?1"},
-  {name:"Hiking Shoes", price:3999, category:"beginner", img:"https://picsum.photos/200?2"},
-  {name:"Pro Trekking Pole", price:1899, category:"pro", img:"https://picsum.photos/200?3"},
-  {name:"Thermal Jacket", price:2999, category:"pro", img:"https://picsum.photos/200?4"},
-  {name:"Camping Tent", price:5499, category:"camping", img:"https://picsum.photos/200?5"},
-  {name:"Portable Stove", price:1999, category:"camping", img:"https://picsum.photos/200?6"}
+  {
+    id: 1,
+    name: "TrailPro 45L Trekking Backpack",
+    price: 3499,
+    rating: 4,
+    category: "pro",
+    sizes: ["S", "M", "L"],
+    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80",
+    desc: "A rugged 45L trekking backpack designed for multi-day treks with ergonomic support and weather resistance.",
+    specs: {
+      weight: "1.2 kg",
+      material: "Ripstop Polyester",
+      warranty: "1 Year"
+    }
+  },
+  {
+    id: 2,
+    name: "GripX High-Traction Hiking Shoes",
+    price: 5299,
+    rating: 5,
+    category: "pro",
+    sizes: ["S", "M", "L"],
+    img: "https://images.unsplash.com/photo-1528701800489-20be3c53e2f6?auto=format&fit=crop&w=600&q=80",
+    desc: "High-traction hiking shoes with reinforced ankle support, suitable for rocky and uneven terrain.",
+    specs: {
+      weight: "900 g (pair)",
+      material: "Mesh + Rubber Sole",
+      warranty: "6 Months"
+    }
+  },
+  {
+    id: 3,
+    name: "StormGuard 3-Person Camping Tent",
+    price: 6999,
+    rating: 4,
+    category: "camping",
+    sizes: ["M", "L"],
+    img: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80",
+    desc: "Waterproof and wind-resistant camping tent suitable for high-altitude and monsoon conditions.",
+    specs: {
+      weight: "2.5 kg",
+      material: "Waterproof Polyester",
+      warranty: "1 Year"
+    }
+  },
+  {
+    id: 4,
+    name: "ThermaPeak Insulated Trek Jacket",
+    price: 3899,
+    rating: 4,
+    category: "winter",
+    sizes: ["S", "M", "L"],
+    img: "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=600&q=80",
+    desc: "Thermal insulated trekking jacket designed for cold climates and high-altitude expeditions.",
+    specs: {
+      weight: "750 g",
+      material: "Thermal Fleece + Windproof Shell",
+      warranty: "6 Months"
+    }
+  }
 ];
 
-let category = "all";
+/* ================= STATE ================= */
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let reviews = JSON.parse(localStorage.getItem("reviews")) || {};
+
+/* ================= CATALOG ================= */
 
 function renderProducts() {
-  const list = document.getElementById("product-list");
-  if (!list) return;
-  const search = document.getElementById("search").value.toLowerCase();
-  list.innerHTML = "";
+  const container = document.getElementById("product-list");
+  if (!container) return;
+  container.innerHTML = "";
 
   products.forEach(p => {
-    if ((category==="all" || p.category===category) && p.name.toLowerCase().includes(search)) {
-      list.innerHTML += `
-        <div class="product">
-          <img src="${p.img}">
-          <h3>${p.name}</h3>
-          <p>₹${p.price}</p>
-          <button onclick="addToCart('${p.name}',${p.price})">Add to Cart</button>
-        </div>`;
-    }
+    container.innerHTML += `
+      <div class="product">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="info">
+          <h4>${p.name}</h4>
+          <p class="price">₹${p.price}</p>
+          <p class="rating">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)}</p>
+          <a href="product.html?id=${p.id}" class="btn-primary">View Details</a>
+        </div>
+      </div>
+    `;
   });
 }
 
-function filterCategory(c){ category=c; renderProducts(); }
+/* ================= PRODUCT PAGE ================= */
 
-function addToCart(name,price){
-  cart.push({name,price});
-  localStorage.setItem("cart",JSON.stringify(cart));
-  updateCart();
+function loadProduct() {
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get("id"));
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  document.getElementById("p-img").src = p.img;
+  document.getElementById("p-name").innerText = p.name;
+  document.getElementById("p-price").innerText = "₹" + p.price;
+  document.getElementById("p-desc").innerText = p.desc;
+
+  document.getElementById("rating-stars").innerText =
+    "★".repeat(p.rating) + "☆".repeat(5 - p.rating);
+
+  document.getElementById("p-specs").innerHTML = `
+    <li><b>Weight:</b> ${p.specs.weight}</li>
+    <li><b>Material:</b> ${p.specs.material}</li>
+    <li><b>Warranty:</b> ${p.specs.warranty}</li>
+  `;
+
+  const sizeBox = document.getElementById("size");
+  sizeBox.innerHTML = p.sizes.map(s => `<option>${s}</option>`).join("");
+
+  renderReviews(id);
+  document.getElementById("add-btn").onclick = () => addToCart(p, sizeBox.value);
+  document.getElementById("wish-btn").onclick = () => addToWishlist(p.id);
 }
 
-function updateCart(){
-  const count=document.getElementById("cart-count");
-  if(count) count.innerText=cart.length;
-  const items=document.getElementById("cart-items");
-  const total=document.getElementById("cart-total");
-  if(items){
-    items.innerHTML="";
-    let sum=0;
-    cart.forEach(i=>{
-      sum+=i.price;
-      items.innerHTML+=`<li>${i.name} - ₹${i.price}</li>`;
-    });
-    total.innerText=sum;
+/* ================= CART ================= */
+
+function addToCart(product, size) {
+  const item = cart.find(i => i.id === product.id && i.size === size);
+  if (item) item.qty++;
+  else cart.push({ ...product, size, qty: 1 });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart");
+}
+
+/* ================= WISHLIST ================= */
+
+function addToWishlist(id) {
+  if (!wishlist.includes(id)) {
+    wishlist.push(id);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert("Added to wishlist");
   }
 }
 
-function toggleCart(){
-  const m=document.getElementById("cart-modal");
-  if(m) m.style.display=m.style.display==="block"?"none":"block";
+/* ================= REVIEWS ================= */
+
+function submitReview(id) {
+  const text = document.getElementById("review-text").value;
+  if (!text) return;
+
+  if (!reviews[id]) reviews[id] = [];
+  reviews[id].push(text);
+
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+  document.getElementById("review-text").value = "";
+  renderReviews(id);
 }
 
-function clearCart(){
-  cart=[];
-  localStorage.clear();
-  updateCart();
+function renderReviews(id) {
+  const box = document.getElementById("reviews");
+  if (!box) return;
+
+  const list = reviews[id] || [];
+  box.innerHTML = list.map(r => `<p>⭐ ${r}</p>`).join("");
 }
 
-function placeOrder(e){
-  e.preventDefault();
-  alert("Order placed successfully! (Demo)");
-  clearCart();
-  window.location.href="index.html";
-}
-
-function loadSummary(){
-  const s=document.getElementById("summary");
-  const t=document.getElementById("final-total");
-  if(!s) return;
-  let sum=0;
-  cart.forEach(i=>{
-    sum+=i.price;
-    s.innerHTML+=`<li>${i.name} - ₹${i.price}</li>`;
-  });
-  t.innerText=sum;
-}
+/* ================= INIT ================= */
 
 renderProducts();
-updateCart();
-loadSummary();const products = [
-  {name:"Trekking Backpack", price:2499, category:"beginner", img:"https://picsum.photos/200?1"},
-  {name:"Hiking Shoes", price:3999, category:"beginner", img:"https://picsum.photos/200?2"},
-  {name:"Pro Trekking Pole", price:1899, category:"pro", img:"https://picsum.photos/200?3"},
-  {name:"Thermal Jacket", price:2999, category:"pro", img:"https://picsum.photos/200?4"},
-  {name:"Camping Tent", price:5499, category:"camping", img:"https://picsum.photos/200?5"},
-  {name:"Portable Stove", price:1999, category:"camping", img:"https://picsum.photos/200?6"}
-];
-
-let category = "all";
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function renderProducts() {
-  const list = document.getElementById("product-list");
-  if (!list) return;
-  const search = document.getElementById("search").value.toLowerCase();
-  list.innerHTML = "";
-
-  products.forEach(p => {
-    if ((category==="all" || p.category===category) && p.name.toLowerCase().includes(search)) {
-      list.innerHTML += `
-        <div class="product">
-          <img src="${p.img}">
-          <h3>${p.name}</h3>
-          <p>₹${p.price}</p>
-          <button onclick="addToCart('${p.name}',${p.price})">Add to Cart</button>
-        </div>`;
-    }
-  });
-}
-
-function filterCategory(c){ category=c; renderProducts(); }
-
-function addToCart(name,price){
-  cart.push({name,price});
-  localStorage.setItem("cart",JSON.stringify(cart));
-  updateCart();
-}
-
-function updateCart(){
-  const count=document.getElementById("cart-count");
-  if(count) count.innerText=cart.length;
-  const items=document.getElementById("cart-items");
-  const total=document.getElementById("cart-total");
-  if(items){
-    items.innerHTML="";
-    let sum=0;
-    cart.forEach(i=>{
-      sum+=i.price;
-      items.innerHTML+=`<li>${i.name} - ₹${i.price}</li>`;
-    });
-    total.innerText=sum;
-  }
-}
-
-function toggleCart(){
-  const m=document.getElementById("cart-modal");
-  if(m) m.style.display=m.style.display==="block"?"none":"block";
-}
-
-function clearCart(){
-  cart=[];
-  localStorage.clear();
-  updateCart();
-}
-
-function placeOrder(e){
-  e.preventDefault();
-  alert("Order placed successfully! (Demo)");
-  clearCart();
-  window.location.href="index.html";
-}
-
-function loadSummary(){
-  const s=document.getElementById("summary");
-  const t=document.getElementById("final-total");
-  if(!s) return;
-  let sum=0;
-  cart.forEach(i=>{
-    sum+=i.price;
-    s.innerHTML+=`<li>${i.name} - ₹${i.price}</li>`;
-  });
-  t.innerText=sum;
-}
-
-renderProducts();
-updateCart();
-loadSummary();
+loadProduct();
