@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Product | TrailCart</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,28 +11,20 @@
 </header>
 
 <section class="pdp">
-  <div class="pdp-image">
-    <img id="pImage">
+  <div class="gallery">
+    <img id="mainImage">
+    <div class="thumbnails" id="thumbs"></div>
   </div>
 
   <div class="pdp-info">
     <h1 id="pName"></h1>
     <p class="price" id="pPrice"></p>
-
-    <div class="rating">★★★★☆</div>
-
     <p id="pDesc"></p>
 
-    <label>Size</label>
-    <select>
-      <option>S</option>
-      <option>M</option>
-      <option>L</option>
-    </select>
+    <h3>Specifications</h3>
+    <ul id="pSpecs"></ul>
 
     <button class="cta">Add to Cart</button>
-
-    <ul class="specs" id="pSpecs"></ul>
   </div>
 </section>
 
