@@ -5,72 +5,97 @@ body {
 }
 
 header {
-  background: #2c5f2d;
+  background: #1b4332;
   color: white;
-  text-align: center;
-  padding: 20px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav {
-  background: #333;
+  background: #2d6a4f;
   text-align: center;
   padding: 10px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-}
-
-nav a:hover {
-  text-decoration: underline;
+nav button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
 }
 
 .hero {
-  background: #e8f5e9;
+  background: #e9f5ef;
   text-align: center;
   padding: 40px;
 }
 
 .products {
-  text-align: center;
-  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
 }
 
-.product-card {
+.product {
   background: white;
-  display: inline-block;
   width: 220px;
   margin: 15px;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
 
-.product-card button {
-  background: #2c5f2d;
+.product img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.product button {
+  width: 100%;
+  padding: 8px;
+  background: #1b4332;
   color: white;
   border: none;
-  padding: 8px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
-.product-card button:hover {
-  background: #1e4620;
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
 }
 
-.about, .contact {
+.cart-box {
   background: white;
-  margin: 20px;
-  padding: 30px;
-  border-radius: 8px;
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
 }
 
-footer {
-  background: #333;
-  color: white;
+.checkout {
+  background: white;
+  padding: 30px;
+  margin: 20px;
+}
+
+.checkout input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.checkout-btn {
+  display: block;
   text-align: center;
+  background: #1b4332;
+  color: white;
   padding: 10px;
+  text-decoration: none;
 }
