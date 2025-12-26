@@ -7,7 +7,7 @@ const products = [
     price:3499,
     rating:4,
     sizes:["S","M","L"],
-    img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80",
+    img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
     desc:"Professional trekking backpack for multi-day hikes.",
     specs:["1.2kg","Ripstop Polyester","1 Year Warranty"]
   },
@@ -17,7 +17,7 @@ const products = [
     price:5299,
     rating:5,
     sizes:["S","M","L"],
-    img:"https://images.unsplash.com/photo-1528701800489-20be3c53e2f6?auto=format&fit=crop&w=600&q=80",
+    img: "https://images.unsplash.com/photo-1514474959185-1472d4c4e8ad?auto=format&fit=crop&w=800&q=80",
     desc:"High traction hiking shoes for rough terrain.",
     specs:["900g","Rubber Sole","6 Months Warranty"]
   }
