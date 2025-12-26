@@ -1,36 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>TrailCart Pro | Trekking Gear</title>
+  <meta charset="UTF-8">
+  <title>TrailCart | Trekking Gear</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="logo">TrailCart <span>PRO</span></div>
+<header class="header">
+  <div class="logo">TrailCart</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="login.html">Account</a>
-    <a href="admin.html">Admin</a>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Camping</a>
+    <a href="#">Accessories</a>
   </nav>
-  <div class="cart-btn" onclick="toggleCart()">🛒</div>
 </header>
 
-<section class="hero-big">
-  <h1>Built for Serious Trekkers</h1>
-  <p>Inspired by Decathlon / Tripole</p>
+<section class="hero">
+  <h1>TREKKING GEAR FOR REAL ADVENTURE</h1>
+  <p>Tested on trails. Built for mountains.</p>
 </section>
 
-<section id="product-list" class="product-grid"></section>
+<section class="section-title">
+  <h2>Top Trekking Essentials</h2>
+</section>
 
-<!-- CART -->
-<div id="cart-modal" class="cart-drawer">
-  <h3>Your Cart</h3>
-  <ul id="cart-items"></ul>
-  <p>Total: ₹<span id="cart-total">0</span></p>
-  <a href="checkout.html" class="btn-primary">Checkout</a>
-  <button onclick="toggleCart()">Close</button>
-</div>
+<section class="product-grid" id="productGrid"></section>
 
 <script src="script.js"></script>
 </body>
