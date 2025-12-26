@@ -1,46 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>TrailCart | Trekking Store</title>
+  <title>TrailCart Pro | Trekking Gear</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>TrailCart</h1>
-  <input type="text" id="search" placeholder="Search gear..." onkeyup="renderProducts()">
-  <div class="cart" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+<header class="topbar">
+  <div class="logo">TrailCart <span>PRO</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Account</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+  <div class="cart-btn" onclick="toggleCart()">🛒</div>
 </header>
 
-<nav>
-  <button onclick="filterCategory('all')">All</button>
-  <button onclick="filterCategory('beginner')">Beginner</button>
-  <button onclick="filterCategory('pro')">Pro</button>
-  <button onclick="filterCategory('camping')">Camping</button>
-</nav>
-
-<section class="hero">
-  <h2>Adventure Starts Here</h2>
-  <p>Premium Trekking & Camping Gear</p>
+<section class="hero-big">
+  <h1>Built for Serious Trekkers</h1>
+  <p>Inspired by Decathlon / Tripole</p>
 </section>
 
-<section class="products" id="product-list"></section>
+<section id="product-list" class="product-grid"></section>
 
-<footer>
-  <p>© 2025 TrailCart | Academic Project</p>
-</footer>
-
-<!-- CART MODAL -->
-<div class="cart-modal" id="cart-modal">
-  <div class="cart-box">
-    <h2>Your Cart</h2>
-    <ul id="cart-items"></ul>
-    <p>Total: ₹<span id="cart-total">0</span></p>
-    <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
-    <button onclick="clearCart()">Clear Cart</button>
-    <button onclick="toggleCart()">Close</button>
-  </div>
+<!-- CART -->
+<div id="cart-modal" class="cart-drawer">
+  <h3>Your Cart</h3>
+  <ul id="cart-items"></ul>
+  <p>Total: ₹<span id="cart-total">0</span></p>
+  <a href="checkout.html" class="btn-primary">Checkout</a>
+  <button onclick="toggleCart()">Close</button>
 </div>
 
 <script src="script.js"></script>
