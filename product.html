@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Product | TrailCart Pro</title>
+  <meta charset="UTF-8">
+  <title>Product | TrailCart</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topbar">
-  <a href="index.html" class="logo">TrailCart <span>PRO</span></a>
+<header class="header">
+  <a href="index.html" class="logo">TrailCart</a>
 </header>
 
-<section class="product-page">
-  <img id="p-img">
-  <div>
-    <h1 id="p-name"></h1>
-    <p id="rating-stars"></p>
-    <h2 id="p-price"></h2>
-    <p id="p-desc"></p>
+<section class="pdp">
+  <div class="pdp-image">
+    <img id="pImage">
+  </div>
 
-    <label>Size:</label>
-    <select id="size"></select>
+  <div class="pdp-info">
+    <h1 id="pName"></h1>
+    <p class="price" id="pPrice"></p>
 
-    <button id="add-btn" class="btn-primary">Add to Cart</button>
-    <button id="wish-btn">♡ Wishlist</button>
+    <div class="rating">★★★★☆</div>
 
-    <h3>Specifications</h3>
-    <ul id="p-specs"></ul>
+    <p id="pDesc"></p>
 
-    <h3>Reviews</h3>
-    <div id="reviews"></div>
-    <textarea id="review-text"></textarea>
-    <button onclick="submitReview(currentProductId)">Submit Review</button>
+    <label>Size</label>
+    <select>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+    </select>
+
+    <button class="cta">Add to Cart</button>
+
+    <ul class="specs" id="pSpecs"></ul>
   </div>
 </section>
 
