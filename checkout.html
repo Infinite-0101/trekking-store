@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout | TrailCart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Checkout</h1>
+</header>
+
+<section class="checkout">
+  <h2>Order Summary</h2>
+  <ul id="summary"></ul>
+  <p>Total: ₹<span id="final-total">0</span></p>
+
+  <h2>Customer Details</h2>
+  <form onsubmit="placeOrder(event)">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="text" placeholder="Address" required>
+    <button type="submit">Place Order</button>
+  </form>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
