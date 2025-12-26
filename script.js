@@ -1,4 +1,4 @@
-const products = [
+console.log("Script loaded successfully");const products = [
   {
     id: 1,
     gender: "men",
@@ -87,3 +87,4 @@ function card(p){
     </div>
   `;
 }
+console.log("Products count:", products.length);
