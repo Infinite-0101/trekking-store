@@ -496,3 +496,71 @@ body {
 .specs li {
   margin-top: 6px;
 }
+/* HOME HERO */
+.home-hero {
+  height: 80vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.home-hero h1 {
+  font-size: 48px;
+  max-width: 600px;
+}
+
+.home-hero p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* QUOTE STRIP */
+.quote-strip {
+  background: #1b4332;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 18px;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 40px;
+}
+
+.section.alt {
+  background: #f0f2f3;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* BANNER */
+.banner {
+  height: 40vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  text-align: center;
+}
+
+/* SMOOTH UI */
+a, button {
+  transition: all 0.3s ease;
+}
