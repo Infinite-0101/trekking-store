@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | TrailCart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="checkout">
+  <h2>Create Account / Login</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</section>
+
+<script>
+function login(){
+  localStorage.setItem("user", document.getElementById("email").value);
+  alert("Login Successful (Demo)");
+  location.href="index.html";
+}
+</script>
+
+</body>
+</html>
