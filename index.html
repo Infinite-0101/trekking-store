@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TrailCart | Trekking Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>TrailCart</h1>
+    <p>Trekking & Outdoor Gear Store</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Gear Up for Your Next Adventure</h2>
+    <p>Reliable trekking and camping products</p>
+  </section>
+
+  <section id="products" class="products">
+    <h2>Our Products</h2>
+
+    <div class="product-card">
+      <h3>Trekking Backpack</h3>
+      <p>₹2499</p>
+      <button onclick="addToCart('Backpack')">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <h3>Hiking Shoes</h3>
+      <p>₹3999</p>
+      <button onclick="addToCart('Shoes')">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <h3>Camping Tent</h3>
+      <p>₹5499</p>
+      <button onclick="addToCart('Tent')">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <h3>Thermal Jacket</h3>
+      <p>₹2999</p>
+      <button onclick="addToCart('Jacket')">Add to Cart</button>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      TrailCart is a trekking and outdoor products e-commerce website
+      created as a college project. It helps users explore gear,
+      understand product usage, and simulate online shopping.
+    </p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@trailcart.com</p>
+    <p>Location: India</p>
+  </section>
+
+  <footer>
+    <p>© 2025 TrailCart | College Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
