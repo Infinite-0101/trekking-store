@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Men | TrailCart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">TrailCart</a>
+  <nav>
+    <a href="men.html">Men</a>
+    <a href="women.html">Women</a>
+  </nav>
+</header>
+
+<section class="category-hero men-hero">
+  <h1>MEN’S TREKKING GEAR</h1>
+  <p>Built for endurance. Tested on trails.</p>
+</section>
+
+<section class="filter-bar">
+  <button onclick="loadCategory('men','all')">All</button>
+  <button onclick="loadCategory('men','backpack')">Backpacks</button>
+  <button onclick="loadCategory('men','shoes')">Shoes</button>
+  <button onclick="loadCategory('men','jacket')">Jackets</button>
+</section>
+
+<section class="product-grid" id="menProducts"></section>
+
+<script src="script.js"></script>
+</body>
+</html>
