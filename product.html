@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product | TrailCart Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="logo">TrailCart <span>PRO</span></a>
+</header>
+
+<section class="product-page">
+  <img id="p-img">
+  <div>
+    <h1 id="p-name"></h1>
+    <p id="rating-stars"></p>
+    <h2 id="p-price"></h2>
+    <p id="p-desc"></p>
+
+    <label>Size:</label>
+    <select id="size"></select>
+
+    <button id="add-btn" class="btn-primary">Add to Cart</button>
+    <button id="wish-btn">♡ Wishlist</button>
+
+    <h3>Specifications</h3>
+    <ul id="p-specs"></ul>
+
+    <h3>Reviews</h3>
+    <div id="reviews"></div>
+    <textarea id="review-text"></textarea>
+    <button onclick="submitReview(currentProductId)">Submit Review</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
